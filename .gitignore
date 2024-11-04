@@ -35,6 +35,8 @@ yarn-error.log
 coverage/
 build/
 dist/
+frontend/coreui-free-react-admin-template-main/
+
 
 # System/Miscellaneous
 .DS_Store
