@@ -29,6 +29,42 @@ public class CuotaServiceImpl implements CuotaService {
     }
 
     @Override
+    public List<Cuota> getAllCuotas() {return cuotaRepository.findAll();
+    }
+
+    @Override
+    public List<Cuota> getAllCuotasByCreditoId(Long creditoId) {
+        return cuotaRepository.findByCreditoId(creditoId);
+    }
+
+    @Override
+    public Optional<Cuota> getCuotaById(Long id) {
+        return cuotaRepository.findById(id);
+    }
+
+    @Override
+    public Cuota createCuota(Cuota cuota) {
+        return cuotaRepository.save(cuota);
+    }
+
+    @Override
+    public Cuota updateCuota(Long id, Cuota cuota) {
+        return cuotaRepository.findById(id).map(existing -> {
+            existing.setNumeroCuota(cuota.getNumeroCuota());
+            existing.setMontoCuota(cuota.getMontoCuota());
+            existing.setFechaVencimiento(cuota.getFechaVencimiento());
+            existing.setEstado(cuota.getEstado());
+            existing.setSaldoPendiente(cuota.getSaldoPendiente());
+            return cuotaRepository.save(existing);
+        }).orElseThrow(() -> new RuntimeException("Cuota no encontrada con ID: " + id));
+    }
+
+    @Override
+    public void deleteCuota(Long id) {
+        cuotaRepository.deleteById(id);
+    }
+
+    @Override
     public Cuota create(Cuota cuota) {
         return cuotaRepository.save(cuota);
     }

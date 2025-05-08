@@ -25,7 +25,7 @@ public class Cuota {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EstadoCuota estado = EstadoCuota.PENDIENTE;
+    private EstadoCuota estado = EstadoCuota.pendiente;
 
     @Column(name = "saldo_pendiente", precision = 12, scale = 2)
     private BigDecimal saldoPendiente;
@@ -36,9 +36,9 @@ public class Cuota {
     // Getters y Setters
 
     public enum EstadoCuota {
-        PENDIENTE,
-        PAGADO,
-        VENCIDO
+        pendiente,
+        pagado,
+        vencido
     }
 
     public Long getId() {

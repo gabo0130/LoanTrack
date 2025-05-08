@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cuotas")
@@ -17,48 +18,35 @@ public class CuotaController {
     @Autowired
     private CuotaService cuotaService;
 
-    // Obtener todas las cuotas
     @GetMapping
     public List<Cuota> getAllCuotas() {
         return cuotaService.getAllCuotas();
     }
-
-    // Obtener cuota por ID
     @GetMapping("/{id}")
     public Optional<Cuota> getCuotaById(@PathVariable Long id) {
         return cuotaService.getCuotaById(id);
     }
 
-    // Crear nueva cuota
+
+    @GetMapping("creditos/{creditoId}")
+    public List<Cuota> getCuotasByCreditoId(@PathVariable Long creditoId) {
+        return cuotaService.getAllCuotasByCreditoId(creditoId);
+    }
+
     @PostMapping
     public Cuota createCuota(@RequestBody Cuota cuota) {
         return cuotaService.createCuota(cuota);
     }
 
-    // Actualizar cuota
     @PutMapping("/{id}")
     public Cuota updateCuota(@PathVariable Long id, @RequestBody Cuota cuota) {
         return cuotaService.updateCuota(id, cuota);
     }
 
-    // Eliminar cuota
     @DeleteMapping("/{id}")
     public void deleteCuota(@PathVariable Long id) {
         cuotaService.deleteCuota(id);
     }
-}//
-//    @DeleteMapping("/{id}")
-//    public void delete(@PathVariable Long id) {
-//        service.deleteCliente(id);
-//    }
-//
-//    @GetMapping("/{id}/references")
-//    public List<ClienteReferencia> getReferencias(@PathVariable Long id) {
-//        return service.getReferencias(id);
-//    }
-//
-//    @PostMapping("/{id}/references")
-//    public ClienteReferencia addReferencia(@PathVariable Long id, @RequestBody Long referenciaId) {
-//        return service.addReferencia(id, referenciaId);
-//    }
+
+
 }

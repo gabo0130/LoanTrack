@@ -1,7 +1,6 @@
 package com.LoanTrack.Backend.Payment_service.service;
 
 
-import com.LoanTrack.Backend.Cuota_service.entity.Cuota;
 import com.LoanTrack.Backend.Payment_service.entity.Cuota;
 
 import java.util.List;
@@ -13,6 +12,8 @@ public interface CuotaService {
     Optional<Cuota> getById(Long id);
 
     List<Cuota> getAllCuotas();
+
+    List<Cuota> getAllCuotasByCreditoId(Long creditoId);
     Optional<Cuota> getCuotaById(Long id);
     Cuota createCuota(Cuota cuota);
     Cuota updateCuota(Long id, Cuota cuota);

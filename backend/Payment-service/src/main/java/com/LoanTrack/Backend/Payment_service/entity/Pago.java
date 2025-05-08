@@ -1,5 +1,6 @@
 package com.LoanTrack.Backend.Payment_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ public class Pago {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_cuota", nullable = false)
+    @JsonIgnore
     private Cuota cuota;
 
 

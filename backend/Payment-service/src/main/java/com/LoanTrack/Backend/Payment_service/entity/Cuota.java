@@ -15,12 +15,11 @@ public class Cuota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_credito", nullable = false)
-    private Credito credito; // no existe la entidad le ftla crearela
-
     @Column(name = "numero_cuota", nullable = false)
     private Integer numeroCuota;
+
+    @Column(name = "id_credito", nullable = false)
+    private Long creditoId;
 
     @Column(name = "monto_cuota", nullable = false, precision = 12, scale = 2)
     private BigDecimal montoCuota;
@@ -30,7 +29,7 @@ public class Cuota {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EstadoCuota estado = EstadoCuota.PENDIENTE;
+    private EstadoCuota estado = EstadoCuota.pendiente;
 
     @Column(name = "saldo_pendiente", precision = 12, scale = 2)
     private BigDecimal saldoPendiente;
@@ -41,9 +40,9 @@ public class Cuota {
     // Getters y Setters
 
     public enum EstadoCuota {
-        PENDIENTE,
-        PAGADO,
-        VENCIDO
+        pendiente,
+        pagado,
+        vencido
     }
 
     public Long getId() {
@@ -52,14 +51,6 @@ public class Cuota {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Credito getCredito() {
-        return credito;
-    }
-
-    public void setCredito(Credito credito) {
-        this.credito = credito;
     }
 
     public Integer getNumeroCuota() {
@@ -108,5 +99,13 @@ public class Cuota {
 
     public void setPagos(List<Pago> pagos) {
         this.pagos = pagos;
+    }
+
+    public Long getCreditoId() {
+        return creditoId;
+    }
+
+    public void setCreditoId(Long creditoId) {
+        this.creditoId = creditoId;
     }
 }
