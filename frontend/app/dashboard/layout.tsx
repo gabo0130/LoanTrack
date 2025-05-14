@@ -98,7 +98,7 @@ function DesktopNav({ onLogout }: { onLogout: () => void }) {
           <CreditCard className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/dashboard/payments" label="Pagos">
+        <NavItem href="/dashboard/pagos" label="Pagos">
           <DollarSign className="h-5 w-5" />
         </NavItem>
       </nav>
@@ -176,7 +176,7 @@ function MobileNav({ onLogout }: { onLogout: () => void }) {
             Creditos
           </Link>
           <Link
-            href="/dashboard/payments"
+            href="/dashboard/pagos"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <DollarSign className="h-5 w-5" />
