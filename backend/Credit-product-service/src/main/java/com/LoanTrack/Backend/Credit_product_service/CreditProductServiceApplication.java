@@ -8,6 +8,7 @@ public class CreditProductServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CreditProductServiceApplication.class, args);
+		System.out.println("Compila");
 	}
 
 }
